@@ -2,7 +2,7 @@ import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from
 import { ConfigService } from '@nestjs/config';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
-import { secret } from 'constant';
+import { JWTConstants, secret } from 'constant';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
      try {
       console.log(secret)
       const payload = await this.jwtService.verifyAsync(token_,{
-        secret: secret,
+        secret: JWTConstants.secret,
       })
       if(!payload){
         console.log("Payload Error!!")

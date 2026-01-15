@@ -8,6 +8,7 @@ import { JWTConstants } from 'constant';
 
 @Module({
     imports: [
+        ConfigModule.forRoot(),
        UsersModule,
        /* JwtModule.register({
         global: true,
