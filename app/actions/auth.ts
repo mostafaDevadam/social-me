@@ -7,12 +7,10 @@ import { cookies } from "next/headers"
 import { deleteID, setID } from "../_lib/id";
 
 
-const API_URL = "http://localhost:3000/auth/signin"
-
 export const loginAction = async (formData: FormData) => {
     console.log("formData:", formData, formData.get("email"), formData.get("password"))
     try {
-        const response = await axios.post(API_URL, {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/signin`, {
             email: formData.get("email"),
             password: formData.get("password")
         })

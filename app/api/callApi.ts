@@ -2,7 +2,7 @@ import axios from "axios"
 import { getToken } from "../_lib/token"
 
 
-const base_URL = process.env.NEXT_PUBLIC_BASE_URL
+const base_URL = String(process.env.NEXT_PUBLIC_BASE_URL) || "http://localhost:6000"
 export const callApi = async (url: string, method: string,body?: any) => {
     const token = await getToken()
     const response = await axios({
