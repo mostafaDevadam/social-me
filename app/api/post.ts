@@ -4,7 +4,6 @@ import { getID } from "../_lib/id";
 import { callApi } from "./callApi";
 import { POSTTYPE } from "../_types/types";
 
-const API_URL = "http://localhost:3000/posts"
 
 const prefix = "posts"
 
@@ -49,24 +48,14 @@ export const getPostById = async (id: any) => {
 export const getPosts = async () => {
     // const res = await callApi(`posts/like/${id}`, "PATCH", { isLike: isLike })
     const token = await getToken();
-    const response = await axios.get(`${API_URL}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "auth-token": token
-        }
-    })
+    const response = await callApi(`${prefix}`, 'GET')
     return response.data;
 }
 
 export const getPostsByUserId = async () => {
     const token = await getToken();
     const id = await getID()
-    const response = await axios.get(`${API_URL}/all/user/${id}`, {
-        headers: {
-            "Content-Type": "application/json",
-            "auth-token": token
-        }
-    })
+    const response = await callApi(`${prefix}/all/user/${id}`, 'GET')
     return response.data;
 }
 
@@ -100,12 +89,7 @@ export const postLike = async (id: any, isLike: boolean) => {
 }
 
 export const removePost = async (id: any) => {
-
     const res = await callApi(`${prefix}/${id}`, "DELETE")
-
     console.log("res:", res.data)
-
     return res.data
-
-
 }
