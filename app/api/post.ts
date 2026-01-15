@@ -47,13 +47,13 @@ export const getPostById = async (id: any) => {
 
 export const getPosts = async () => {
     // const res = await callApi(`posts/like/${id}`, "PATCH", { isLike: isLike })
-    const token = await getToken();
+    //const token = await getToken();
     const response = await callApi(`${prefix}`, 'GET')
     return response.data;
 }
 
 export const getPostsByUserId = async () => {
-    const token = await getToken();
+    //const token = await getToken();
     const id = await getID()
     const response = await callApi(`${prefix}/all/user/${id}`, 'GET')
     return response.data;

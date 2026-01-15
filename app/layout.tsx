@@ -76,10 +76,10 @@ export default async function RootLayout({
 
 
 
-            {session &&
+            {/*session &&
               <div className="container ml-auto mt-10 w-1/4 text-center ">
                 <RightSideBar />
-              </div>}
+              </div>*/}
 
 
           </div>
